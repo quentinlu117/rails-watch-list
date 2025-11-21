@@ -8,8 +8,6 @@
 
 <ul class="d-flex flex-column gap-4">
   <% @lists.each do |list| %>
-    <%= link_to list_path(list), class: "card rounded" do %>
-      <div class="card-body"><%= list.name %></div>
-    <% end %>
+    <%= render "card", list: list %>
   <% end %>
 </ul>

@@ -10,8 +10,23 @@
   <% end %>
   </div>
 
-<ul>
+<ul class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3 list-unstyled">
   <% @list.movies.each do |movie| %>
-    <li><%= movie.title %> <%= link_to "X", bookmark_path(@bookmark), data: {turbo_method: :delete}%></li>
+    <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+    <li class="p-2 col">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex flex-column gap-2">
+            <%= image_tag(movie.poster_url, alt: movie.title, class: "rounded") %>
+            <h5><%= movie.title %></h5>
+            <p class="text-secondary">"<%= bookmark.comment %>"</p>
+          </div>
+          <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'btn btn-danger text-white' do %>
+            <i class="fa-regular fa-trash-can"></i>
+            Remove
+          <% end %>
+        </div>
+      </div>
+    </li>
   <% end %>
 </ul>
