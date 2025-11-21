@@ -1,0 +1,13 @@
+<div class="header d-flex flex-row align-items-start">
+  <%= link_to lists_path, class: "btn btn-primary" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+    Back
+  <% end %>
+  <h2 class="ms-4">Ajouter un film à votre liste : <%= @list.name %></h2>
+</div>
+
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.association :movie, collection: Movie.all %>
+  <%= f.submit class: "btn btn-dark" %>
+<% end %>

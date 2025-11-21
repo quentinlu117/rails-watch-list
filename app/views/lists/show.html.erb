@@ -1,0 +1,17 @@
+<div class="header d-flex flex-row align-items-start">
+  <%= link_to lists_path, class: "btn btn-primary" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+    Back
+  <% end %>
+  <h2 class="ms-4 flex-grow-1"><%= @list.name %></h2>
+  <%= link_to new_list_bookmark_path(@list), class: "btn btn-outline-primary" do %>
+    <i class="fa-solid fa-plus"></i>
+    Add film
+  <% end %>
+  </div>
+
+<ul>
+  <% @list.movies.each do |movie| %>
+    <li><%= movie.title %> <%= link_to "X", bookmark_path(@bookmark), data: {turbo_method: :delete}%></li>
+  <% end %>
+</ul>

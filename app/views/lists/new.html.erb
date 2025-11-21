@@ -1,0 +1,12 @@
+<div class="header d-flex flex-row align-items-start">
+  <%= link_to lists_path, class: "btn btn-primary" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+    Back
+  <% end %>
+  <h2 class="ms-4">New list :</h2>
+</div>
+
+<%= simple_form_for @list do |f| %>
+  <%= f.input :name %>
+  <%= f.submit class: "btn btn-dark" %>
+<% end %>
