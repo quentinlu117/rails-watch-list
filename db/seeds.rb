@@ -21,7 +21,7 @@ request["accept"] = 'application/json'
 
 response = http.request(request)
 # puts response.read_body
-movies = JSON.parse(response.read_body)["results"].first(20)
+movies = JSON.parse(response.read_body)["results"].first(30)
 movie_poster_base_url = "https://image.tmdb.org/t/p/w500/"
 # p repos_20
 

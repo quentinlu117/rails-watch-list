@@ -1,9 +1,12 @@
-<div class="header d-flex flex-row align-items-start">
+<div class="header d-flex flex-row align-items-start gap-2">
   <%= link_to lists_path, class: "btn btn-primary" do %>
     <i class="fa-solid fa-arrow-left"></i>
     Back
   <% end %>
   <h2 class="ms-4 flex-grow-1"><%= @list.name %></h2>
+  <%= link_to list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this list ?"}, class: 'btn btn-outline-danger' do %>
+    <i class="fa-regular fa-trash-can"></i>
+  <% end %>
   <%= link_to new_list_bookmark_path(@list), class: "btn btn-outline-primary" do %>
     <i class="fa-solid fa-plus"></i>
     Add film
